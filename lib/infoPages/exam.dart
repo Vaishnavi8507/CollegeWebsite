@@ -1,79 +1,135 @@
+import 'package:dashclg/CIE_1/pages/editable.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: ExamResultScreen(),
-  ));
-}
 
-class ExamResultScreen extends StatefulWidget {
-  @override
-  _ExamResultScreenState createState() => _ExamResultScreenState();
-}
 
-class _ExamResultScreenState extends State<ExamResultScreen> {
-  TextEditingController exam1Controller = TextEditingController();
-  TextEditingController exam2Controller = TextEditingController();
-  TextEditingController exam3Controller = TextEditingController();
-  String finalResult = '';
-
-  void calculateFinalResult() {
-    double exam1 = double.tryParse(exam1Controller.text) ?? 0;
-    double exam2 = double.tryParse(exam2Controller.text) ?? 0;
-    double exam3 = double.tryParse(exam3Controller.text) ?? 0;
-
-    double average = (exam1 + exam2 + exam3) / 3;
-
-    setState(() {
-      finalResult = 'Final Result: $average';
-    });
-  }
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Exam Result'),
+        centerTitle: true,
+        title: Text('Examination'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: exam1Controller,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Exam 1',
-              ),
+      body: Container(
+        padding: const EdgeInsets.only(top: 20),
+        child:Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          GestureDetector(
+            onTap: (){
+              Navigator.push(
+                  context, MaterialPageRoute(builder: ((context)=>EditablePages())));
+            },
+         child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey,width: 3.0),
             ),
-            TextField(
-              controller: exam2Controller,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Exam 2',
-              ),
+            padding: EdgeInsets.all(20.0),
+            child: Row(
+              children: [
+                Text('CIE 1',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                ),
+              ],
             ),
-            TextField(
-              controller: exam3Controller,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Exam 3',
-              ),
+          ),
+          ),
+          SizedBox(height: 20.0),
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context,MaterialPageRoute(builder: ((context)=>EditablePages())));
+            },
+          child:Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey,width:3.0,),
             ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: calculateFinalResult,
-              child: Text('Calculate'),
+            padding: EdgeInsets.all(20.0),
+            child: Row(
+              children: [
+                Text('CIE 2',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+                ),
+              ],
             ),
-            SizedBox(height: 16.0),
-            Text(
-              finalResult,
-              style: TextStyle(fontSize: 24.0),
+          ),
+          ),
+          SizedBox(height: 20.0),
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context,MaterialPageRoute(builder: ((context)=>EditablePages())));
+            },
+         child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey,width: 3.0),
             ),
-          ],
-        ),
+            padding: EdgeInsets.all(20.0),
+            child: Row(
+              children: [
+                Text('CIE 3',
+                    style:TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    )
+                ),
+              ],
+            ),
+          ),
+          ),
+        ],
+      ),
+
       ),
     );
   }
 }
+class DetailsPage extends StatelessWidget {
+
+
+  @override
+  Widget build(BuildContext context) {
+    final String rowTitle=ModalRoute.of(context)?.settings.arguments as String;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Details Page'),
+      ),
+      body: Center(
+        child:Text(
+        'You clicked on $rowTitle',
+        style:TextStyle(
+          fontSize:20.0,
+
+    )
+      ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
