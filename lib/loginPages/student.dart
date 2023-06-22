@@ -65,7 +65,14 @@ class _StudentScreenState extends State<StudentScreen> {
                     focusedBorder: OutlineInputBorder(
                       borderSide:BorderSide(color:Colors.deepPurple),
                     ),
-                    suffixIcon: Icon(Icons.remove_red_eye_rounded),
+                    suffixIcon: InkWell(
+                      onTap:() {
+                        setState(() {
+                          PassToggle = !PassToggle;
+                        });
+                      },
+                      child:Icon(PassToggle ?Icons.visibility:Icons.visibility_off),
+                    ),
                   ),
                 ),
                 SizedBox(height: 15),
