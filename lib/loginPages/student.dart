@@ -8,7 +8,7 @@ class StudentScreen extends StatefulWidget {
   State<StudentScreen> createState() => _StudentScreenState();
 }
 
-class _StudentScreenState extends State<StudentScreen> {
+class _StudentScreenState extends State<StudentScreen>{
   late bool PassToggle=false;
   @override
   Widget build(BuildContext context) {
