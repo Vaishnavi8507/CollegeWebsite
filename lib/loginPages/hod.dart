@@ -2,7 +2,7 @@ import 'package:dashclg/screens/princiScreen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/hodScreen.dart';
-class HODScreen extends StatefulWidget {
+class HODScreen extends StatefulWidget{
   const HODScreen({Key? key}) : super(key: key);
 
   @override
